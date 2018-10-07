@@ -1,0 +1,20 @@
+{
+  "name": "treehouse-fsjs-project8-using-gulp-to-build-a-front-end-website",
+  "version": "1.0.0",
+  "description": "In this project you’ll be provided a website with HTML, SCSS, JPEGs, PNGs and JavaScript files. You’ll be required to set up a Gulp build process to prepare the website for deployment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvwebd/treehouse-fsjs-project8-using-gulp-to-build-a-front-end-website.git"
+  },
+  "keywords": ["Gulp", "Node", "Build Tools"],
+  "author": "Nejc Vukovic - nvwebd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvwebd/treehouse-fsjs-project8-using-gulp-to-build-a-front-end-website/issues"
+  },
+  "homepage": "https://github.com/nvwebd/treehouse-fsjs-project8-using-gulp-to-build-a-front-end-website#readme"
+}
