@@ -29,38 +29,21 @@ const paths = {
 gulp.task("scripts", () => {
   return gulp
     .src(paths.scripts.src)
-    .pipe(concat("all.js"))
-    .pipe(rename("all.min.js"))
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.scripts.dest));
-});
-
-gulp.task("scripts:sourcemaps", () => {
-  return gulp
-    .src(paths.scripts.src)
     .pipe(sourcemaps.init())
     .pipe(concat("all.js"))
     .pipe(rename("all.min.js"))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write("./"))
     .pipe(gulp.dest(paths.scripts.dest));
 });
 
 gulp.task("styles", () => {
   return gulp
     .src(paths.styles.src)
-    .pipe(sass({ outputStyle: "compressed" }))
-    .pipe(rename("all.min.css"))
-    .pipe(gulp.dest(paths.styles.dest));
-});
-
-gulp.task("styles:sourcemaps", () => {
-  return gulp
-    .src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: "compressed" }))
     .pipe(rename("all.min.css"))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write("./"))
     .pipe(gulp.dest(paths.styles.dest));
 });
 
@@ -90,7 +73,7 @@ gulp.task("reload", done => {
 });
 
 gulp.task("watch", done => {
-  gulp.watch(paths.styles.src, gulp.series("styles:sourcemaps", "reload"));
+  gulp.watch("sass/**/*.+(scss|sass)", gulp.series("styles", "reload"));
   done();
 });
 
@@ -98,8 +81,8 @@ gulp.task(
   "build",
   gulp.series(
     "clean",
-    "scripts:sourcemaps",
-    "styles:sourcemaps",
+    "scripts",
+    "styles",
     "images",
     "serve"
   )
@@ -109,8 +92,8 @@ gulp.task(
   "default",
   gulp.series(
     "clean",
-    "scripts:sourcemaps",
-    "styles:sourcemaps",
+    "scripts",
+    "styles",
     "images",
     "serve",
     "watch"
